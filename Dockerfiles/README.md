@@ -3,7 +3,7 @@
 ## NanoServer
 
 ### Build the Docker image
-docker build -t mpospisil/dotnet-runtime-windowsdesktop:6.0.15-nanoserver-ltsc2022 .
+docker build -f Dockerfile.nano -t mpospisil/dotnet-runtime-windowsdesktop:6.0.15-nanoserver-ltsc2022 .
 
 ### Tag the image
 
