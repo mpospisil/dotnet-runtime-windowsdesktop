@@ -13,7 +13,7 @@ RUN $dotnet_version = '6.0.15'; `
     ./dotnet-installer.exe /S
 
 # Runtime image 
-FROM mcr.microsoft.com/windows/servercore:ltsc2022 as core-with-dotnet
+FROM mcr.microsoft.com/windows/nanoserver:ltsc2022 as nano-with-dotnet
 
 ENV `
     # Enable detection of running in a container
