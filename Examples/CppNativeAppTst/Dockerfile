@@ -28,9 +28,15 @@ USER ContainerUser
 
 COPY --from=installer ["/Program Files/dotnet", "/Program Files/dotnet"]
 
+SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
+RUN [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; `
+    Invoke-WebRequest "https://aka.ms/vs/17/release/vc_redist.x64.exe" -OutFile "vc_redist.x64.exe"; `
+    Start-Process -filepath C:\vc_redist.x64.exe -ArgumentList "/install", "/passive", "/norestart" -Passthru | Wait-Process; `
+    Remove-Item -Force vc_redist.x64.exe;
+
 
 FROM application-base AS base
 FROM base AS final
 WORKDIR /app
 COPY MyConsole/bin/x64/Release/net6.0-windows .
-# ENTRYPOINT ["dotnet", "WpfConsole.dll"]
+ENTRYPOINT ["dotnet", "MyConsole.dll"]
