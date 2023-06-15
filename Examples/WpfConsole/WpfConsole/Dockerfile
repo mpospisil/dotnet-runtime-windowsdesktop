@@ -14,8 +14,8 @@ RUN $dotnet_version = '6.0.18'; `
 # Runtime image 
 # FROM mcr.microsoft.com/dotnet/aspnet:6.0-nanoserver-ltsc2022 as nano-with-dotnet
 # FROM mcr.microsoft.com/dotnet/aspnet:6.0.18-windowsservercore-ltsc2022 as nano-with-dotnet
-# FROM mcr.microsoft.com/dotnet/runtime:6.0.18-windowsservercore-ltsc2022 as nano-with-dotnet
-FROM mcr.microsoft.com/dotnet/runtime:6.0-nanoserver-ltsc2022 as nano-with-dotnet
+FROM mcr.microsoft.com/dotnet/runtime:6.0.18-windowsservercore-ltsc2022 as nano-with-dotnet
+# FROM mcr.microsoft.com/dotnet/runtime:6.0-nanoserver-ltsc2022 as nano-with-dotnet
 
 ENV `
     # Enable detection of running in a container
