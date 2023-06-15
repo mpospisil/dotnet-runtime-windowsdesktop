@@ -5,6 +5,10 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CppNativeAppTst", "CppNativeAppTst\CppNativeAppTst.vcxproj", "{03C21B3F-DA26-42E2-B579-30BE8A899067}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyConsole", "MyConsole\MyConsole.csproj", "{2FFA62DE-303F-4E88-9283-0BA8127AAC7C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ClrLibrary", "ClrLibrary\ClrLibrary.vcxproj", "{C3928B79-24CA-40AB-8C1D-93345B7FD6EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -15,6 +19,14 @@ Global
 		{03C21B3F-DA26-42E2-B579-30BE8A899067}.Debug|x64.Build.0 = Debug|x64
 		{03C21B3F-DA26-42E2-B579-30BE8A899067}.Release|x64.ActiveCfg = Release|x64
 		{03C21B3F-DA26-42E2-B579-30BE8A899067}.Release|x64.Build.0 = Release|x64
+		{2FFA62DE-303F-4E88-9283-0BA8127AAC7C}.Debug|x64.ActiveCfg = Debug|x64
+		{2FFA62DE-303F-4E88-9283-0BA8127AAC7C}.Debug|x64.Build.0 = Debug|x64
+		{2FFA62DE-303F-4E88-9283-0BA8127AAC7C}.Release|x64.ActiveCfg = Release|x64
+		{2FFA62DE-303F-4E88-9283-0BA8127AAC7C}.Release|x64.Build.0 = Release|x64
+		{C3928B79-24CA-40AB-8C1D-93345B7FD6EF}.Debug|x64.ActiveCfg = Debug|x64
+		{C3928B79-24CA-40AB-8C1D-93345B7FD6EF}.Debug|x64.Build.0 = Debug|x64
+		{C3928B79-24CA-40AB-8C1D-93345B7FD6EF}.Release|x64.ActiveCfg = Release|x64
+		{C3928B79-24CA-40AB-8C1D-93345B7FD6EF}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
