@@ -12,10 +12,10 @@ RUN $dotnet_version = '6.0.18'; `
     ./dotnet-installer.exe /S
 
 # Runtime image 
-# FROM mcr.microsoft.com/dotnet/aspnet:6.0-nanoserver-ltsc2022 as nano-with-dotnet
-# FROM mcr.microsoft.com/dotnet/aspnet:6.0.18-windowsservercore-ltsc2022 as nano-with-dotnet
-FROM mcr.microsoft.com/dotnet/runtime:6.0.18-windowsservercore-ltsc2022 as nano-with-dotnet
-# FROM mcr.microsoft.com/dotnet/runtime:6.0-nanoserver-ltsc2022 as nano-with-dotnet
+# FROM mcr.microsoft.com/dotnet/aspnet:6.0-nanoserver-ltsc2022 as application-base
+# FROM mcr.microsoft.com/dotnet/aspnet:6.0.18-windowsservercore-ltsc2022 as application-base
+FROM mcr.microsoft.com/dotnet/runtime:6.0.18-windowsservercore-ltsc2022 as application-base
+# FROM mcr.microsoft.com/dotnet/runtime:6.0-nanoserver-ltsc2022 as application-base
 
 ENV `
     # Enable detection of running in a container
@@ -29,7 +29,7 @@ USER ContainerUser
 COPY --from=installer ["/Program Files/dotnet", "/Program Files/dotnet"]
 
 
-FROM nano-with-dotnet AS base
+FROM application-base AS base
 WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
@@ -46,4 +46,4 @@ RUN dotnet publish "WpfConsole.csproj" -c Release --runtime win10-x64 -o /app/pu
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-#ENTRYPOINT ["dotnet", "WpfConsole.dll"]
+ENTRYPOINT ["dotnet", "WpfConsole.dll"]
