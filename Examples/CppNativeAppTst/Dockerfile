@@ -39,9 +39,7 @@ RUN dotnet build "WpfConsole.csproj" -c Release -o /app/build
 FROM build AS publish
 RUN dotnet publish "WpfConsole.csproj" -c Release --runtime win10-x64 -o /app/publish --self-contained false
 
-
 FROM application-base AS base
-
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
