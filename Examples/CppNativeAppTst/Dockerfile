@@ -28,19 +28,9 @@ USER ContainerUser
 
 COPY --from=installer ["/Program Files/dotnet", "/Program Files/dotnet"]
 
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /src
-COPY ["WpfConsole.csproj", "./"]
-RUN dotnet restore "./WpfConsole.csproj"
-COPY . .
-WORKDIR "/src/."
-RUN dotnet build "WpfConsole.csproj" -c Release -o /app/build
-
-FROM build AS publish
-RUN dotnet publish "WpfConsole.csproj" -c Release --runtime win10-x64 -o /app/publish --self-contained false
 
 FROM application-base AS base
 FROM base AS final
 WORKDIR /app
-COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "WpfConsole.dll"]
+COPY /x64/Release .
+# ENTRYPOINT ["dotnet", "WpfConsole.dll"]

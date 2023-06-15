@@ -2,10 +2,26 @@
 //
 
 #include <iostream>
+#include <fstream>
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	std::cout << "Hello World!\n";
+
+	std::ofstream file("filename.txt");
+
+	if (file.is_open()) {
+		std::string str = "Hello, World!";
+		file << str;
+		file.close();
+
+		std::cout << "String written to the file successfully." << std::endl;
+	}
+	else {
+		std::cout << "Failed to open the file." << std::endl;
+		// Handle the error
+	}
+
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
