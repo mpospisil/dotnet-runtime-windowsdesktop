@@ -32,5 +32,5 @@ COPY --from=installer ["/Program Files/dotnet", "/Program Files/dotnet"]
 FROM application-base AS base
 FROM base AS final
 WORKDIR /app
-COPY MyConsole/bin/Release/net6.0-windows .
+COPY MyConsole/bin/x64/Release/net6.0-windows .
 # ENTRYPOINT ["dotnet", "WpfConsole.dll"]
