@@ -1,6 +1,10 @@
 # escape=`
 
+# Runtime image 
+# FROM mcr.microsoft.com/dotnet/aspnet:6.0-nanoserver-ltsc2022 as application-base
+# FROM mcr.microsoft.com/dotnet/aspnet:6.0.18-windowsservercore-ltsc2022 as application-base
 FROM mcr.microsoft.com/dotnet/runtime:6.0.18-windowsservercore-ltsc2022 as application-base
+# FROM mcr.microsoft.com/dotnet/runtime:6.0-nanoserver-ltsc2022 as application-base
 
 ENV `
     # Enable detection of running in a container
@@ -19,3 +23,9 @@ RUN $dotnet_version = '6.0.18'; `
 RUN Invoke-WebRequest "https://aka.ms/vs/17/release/vc_redist.x64.exe" -OutFile "vc_redist.x64.exe"; `
     Start-Process -filepath C:\vc_redist.x64.exe -ArgumentList "/install", "/passive", "/norestart" -Passthru | Wait-Process; `
     Remove-Item -Force vc_redist.x64.exe;
+
+FROM application-base AS final
+WORKDIR /app
+COPY MyConsole/bin/x64/Release/net6.0-windows .
+
+ENTRYPOINT ["dotnet", "MyConsole.dll"]
