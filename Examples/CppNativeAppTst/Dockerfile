@@ -5,6 +5,10 @@ FROM mcr.microsoft.com/windows/servercore:ltsc2022 AS installer
 
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
+# Run PowerShell commands
+RUN Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope LocalMachine -Force
+
+
 # Retrieve .NET Core Runtime
 # USER ContainerAdministrator
 RUN $dotnet_version = '6.0.18'; `
@@ -21,22 +25,29 @@ ENV `
     # Enable detection of running in a container
     DOTNET_RUNNING_IN_CONTAINER=true
 
-# In order to set system PATH, ContainerAdministrator must be used
-USER ContainerAdministrator
-RUN setx /M PATH "%PATH%;C:\Program Files\dotnet"
-USER ContainerUser
-
-COPY --from=installer ["/Program Files/dotnet", "/Program Files/dotnet"]
-
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
-RUN [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; `
-    Invoke-WebRequest "https://aka.ms/vs/17/release/vc_redist.x64.exe" -OutFile "vc_redist.x64.exe"; `
-    Start-Process -filepath C:\vc_redist.x64.exe -ArgumentList "/install", "/passive", "/norestart" -Passthru | Wait-Process; `
+
+# Run PowerShell commands
+RUN Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope LocalMachine -Force
+
+RUN $dotnet_version = '6.0.18'; `
+    Invoke-WebRequest -OutFile dotnet-installer.exe https://download.visualstudio.microsoft.com/download/pr/f76bace5-6cf4-41d8-ab54-fb7a3766b673/1cbc047d4547dfa9ecd59d5a71402186/windowsdesktop-runtime-6.0.18-win-x64.exe; `
+    ./dotnet-installer.exe /S
+
+RUN Invoke-WebRequest "https://aka.ms/vs/17/release/vc_redist.x64.exe" -OutFile "vc_redist.x64.exe"; `
+    Start-Process -filepath C:\vc_redist.x64.exe -ArgumentList "/install", "/passive", "/norestart", "/log", "redist-instal.txt" -Passthru | Wait-Process; `
     Remove-Item -Force vc_redist.x64.exe;
 
+# In order to set system PATH, ContainerAdministrator must be used
+# USER ContainerAdministrator
+# RUN setx /M PATH "%PATH%;C:\Program Files\dotnet"
+# USER ContainerUser
+
+# COPY --from=installer ["/Program Files/dotnet", "/Program Files/dotnet"]
 
 FROM application-base AS base
 FROM base AS final
 WORKDIR /app
 COPY MyConsole/bin/x64/Release/net6.0-windows .
-ENTRYPOINT ["dotnet", "MyConsole.dll"]
+
+# ENTRYPOINT ["dotnet", "MyConsole.dll"]
