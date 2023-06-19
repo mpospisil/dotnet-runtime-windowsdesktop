@@ -6,12 +6,12 @@
 
 int main()
 {
-	std::cout << "Hello World!\n";
+	std::cout << "Hello World from MFC application!\n";
 
 	std::ofstream file("filename.txt");
 
 	if (file.is_open()) {
-		std::string str = "Hello, World!";
+		std::string str = "Hello World from MFC application!";
 		file << str;
 		file.close();
 
