@@ -18,9 +18,15 @@ ENV `
     # Enable detection of running in a container
     DOTNET_RUNNING_IN_CONTAINER=true
 
+# copy windows c++ redistributable 
+# copy the content of 'C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Redist\MSVC\14.34.31931\onecore\x64\Microsoft.VC143.CRT'
+# to the directory'vc_redist.x64' (the subfolder in the directory with Dockerfile on your PC)
+COPY ["vc_redist.x64", "/Program Files/vc_redist.x64"]  
+
 # In order to set system PATH, ContainerAdministrator must be used
 USER ContainerAdministrator
 RUN setx /M PATH "%PATH%;C:\Program Files\dotnet"
+RUN setx /M PATH "%PATH%;C:\Program Files\vc_redist.x64"
 USER ContainerUser
 
 COPY --from=installer ["/Program Files/dotnet", "/Program Files/dotnet"]
