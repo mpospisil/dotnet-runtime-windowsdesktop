@@ -23,10 +23,11 @@ ENV `
 # to the directory'vc_redist.x64' (the subfolder in the directory with Dockerfile on your PC)
 COPY ["vc_redist.x64", "/Program Files/vc_redist.x64"]  
 
+COPY --from=installer ["/Program Files/dotnet", "/Program Files/dotnet"]
+
 # In order to set system PATH, ContainerAdministrator must be used
 USER ContainerAdministrator
-RUN setx /M PATH "%PATH%;C:\Program Files\dotnet"
-RUN setx /M PATH "%PATH%;C:\Program Files\vc_redist.x64"
+RUN setx /M PATH "%PATH%;C:\Program Files\dotnet;C:\Program Files\vc_redist.x64"
 USER ContainerUser
 
-COPY --from=installer ["/Program Files/dotnet", "/Program Files/dotnet"]
+
