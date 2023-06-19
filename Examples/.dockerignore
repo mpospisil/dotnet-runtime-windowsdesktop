@@ -154,5 +154,4 @@ Debug/
 node_modules/
 
 # Exclude 'x64' folder
-!MyConsole/bin/Release/net6.0-windows/
-!MyConsole/bin/x64/Release/net6.0-windows
+!x64/Release/
