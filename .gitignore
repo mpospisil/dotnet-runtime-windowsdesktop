@@ -398,3 +398,4 @@ FodyWeavers.xsd
 *.sln.iml
 Dockerfiles/vc_redist.x64
 Examples/CppNativeAppTst/vc_redist.x64
+DWrite.dll
