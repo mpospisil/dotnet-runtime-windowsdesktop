@@ -18,6 +18,9 @@ ENV `
     # Enable detection of running in a container
     DOTNET_RUNNING_IN_CONTAINER=true
 
+# this dll is required 
+COPY DWrite.dll /Windows/System32
+
 # copy windows c++ redistributable 
 # copy the content of 'C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Redist\MSVC\14.34.31931\onecore\x64\Microsoft.VC143.CRT'
 # to the directory'vc_redist.x64' (the subfolder in the directory with Dockerfile on your PC)

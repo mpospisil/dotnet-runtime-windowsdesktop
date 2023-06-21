@@ -14,8 +14,8 @@ RUN $dotnet_version = '6.0.18'; `
 # Runtime image 
 # FROM mcr.microsoft.com/dotnet/aspnet:6.0-nanoserver-ltsc2022 as application-base
 # FROM mcr.microsoft.com/dotnet/aspnet:6.0.18-windowsservercore-ltsc2022 as application-base
-FROM mcr.microsoft.com/dotnet/runtime:6.0.18-windowsservercore-ltsc2022 as application-base
-# FROM mcr.microsoft.com/dotnet/runtime:6.0-nanoserver-ltsc2022 as application-base
+# FROM mcr.microsoft.com/dotnet/runtime:6.0.18-windowsservercore-ltsc2022 as application-base
+FROM mcr.microsoft.com/dotnet/runtime:6.0-nanoserver-ltsc2022 as application-base
 
 ENV `
     # Enable detection of running in a container
@@ -23,6 +23,7 @@ ENV `
 
 # In order to set system PATH, ContainerAdministrator must be used
 USER ContainerAdministrator
+COPY DWrite.dll /Windows/System32
 RUN setx /M PATH "%PATH%;C:\Program Files\dotnet"
 USER ContainerUser
 
@@ -45,4 +46,4 @@ FROM application-base AS base
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "WpfConsole.dll"]
+# ENTRYPOINT ["dotnet", "WpfConsole.dll"]
