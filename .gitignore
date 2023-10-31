@@ -397,3 +397,5 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 Examples/CppNativeAppTst/vc_redist.x64
+Examples/DWrite.dll
+Examples/WpfConsole/WpfConsole/DWrite.dll
