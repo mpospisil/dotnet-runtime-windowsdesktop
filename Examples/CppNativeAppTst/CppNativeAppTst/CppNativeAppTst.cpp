@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <atlstr.h>
 
 int main()
 {
@@ -22,6 +23,12 @@ int main()
 		// Handle the error
 	}
 
+	CString aCString = CString(_T("This is CString"));
+	_tprintf(_T("%s\n"), (LPCTSTR)aCString);
+
+	std::cout << "enter a string" << std::endl;
+	std::string intput;
+	std::cin >> intput;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

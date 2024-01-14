@@ -75,6 +75,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CppNativeAppTst.cpp" />
+    <ClCompile Include="MfcTest.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MfcTest.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
