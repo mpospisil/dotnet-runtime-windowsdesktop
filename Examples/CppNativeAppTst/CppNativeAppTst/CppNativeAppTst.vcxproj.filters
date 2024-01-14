@@ -18,5 +18,13 @@
     <ClCompile Include="CppNativeAppTst.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MfcTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MfcTest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
