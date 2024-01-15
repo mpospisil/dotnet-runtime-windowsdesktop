@@ -37,5 +37,6 @@ USER ContainerAdministrator
 RUN setx /M PATH "%PATH%;C:\Program Files\dotnet;C:\Program Files\vc_redist.x64;C:\Program Files\powershell""
 USER ContainerUser
 
+# ENTRYPOINT ["cmd"]
 
 
