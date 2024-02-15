@@ -77,3 +77,21 @@ docker login registry-url
 
 ### Push the image to the container repository
 docker push docker.io/mpospisil/dotnet-runtime-windowsdesktop:6.0.18-aspnetservercore-ltsc2022
+
+
+## Dockerfile.nano-kernel + node.js
+Install node.js in 6.0.18-nanoserver-kernel32-ltsc2022
+
+### Build the Docker image
+docker build -f Dockerfile.nano-nodejs -t mpospisil/dotnet-runtime-windowsdesktop:6.0.18-nanoserver-nanoserver-nodejs-ltsc2022 .
+
+### Tag the image
+
+docker tag mpospisil/dotnet-runtime-windowsdesktop:6.0.18-nanoserver-nanoserver-nodejs-ltsc2022  docker.io/mpospisil/dotnet-runtime-windowsdesktop:6.0.18-nanoserver-nanoserver-nodejs-ltsc2022
+
+### Log in to the container repository
+docker login registry-url
+
+### Push the image to the container repository
+docker push docker.io/mpospisil/dotnet-runtime-windowsdesktop:6.0.18-nanoserver-nanoserver-nodejs-ltsc2022
+
