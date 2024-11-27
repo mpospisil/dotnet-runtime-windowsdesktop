@@ -47,20 +47,20 @@ docker login registry-url
 docker push docker.io/mpospisil/dotnet-runtime-windowsdesktop:6.0.18-nanoserver-pwsh-ltsc2022
 
 ## Windows Server Core
-Windows Server Core with installation of windowsdesktop-runtime-8.0.11-win-x64 and vc_redist.x64.exe
+Windows Server Core with installation of windowsdesktop-runtime-6.0.18-win-x64 and vc_redist.x64.exe
 
 ### Build the Docker image
-docker build -f Dockerfile.core -t mpospisil/dotnet-runtime-windowsdesktop:8.0.11-windowsservercore-ltsc2022 .
+docker build -f Dockerfile.core -t mpospisil/dotnet-runtime-windowsdesktop:6.0.18-windowsservercore-ltsc2022 .
 
 ### Tag the image
 
-docker tag mpospisil/dotnet-runtime-windowsdesktop:8.0.11-windowsservercore-ltsc2022  docker.io/mpospisil/dotnet-runtime-windowsdesktop:8.0.11-windowsservercore-ltsc2022 
+docker tag mpospisil/dotnet-runtime-windowsdesktop:6.0.18-windowsservercore-ltsc2022  docker.io/mpospisil/dotnet-runtime-windowsdesktop:6.0.18-windowsservercore-ltsc2022 
 
 ### Log in to the container repository
 docker login registry-url
 
 ### Push the image to the container repository
-docker push docker.io/mpospisil/dotnet-runtime-windowsdesktop:8.0.11-windowsservercore-ltsc2022
+docker push docker.io/mpospisil/dotnet-runtime-windowsdesktop:6.0.18-windowsservercore-ltsc2022
 
 ## Windows Server Core + ASP.NET
 Windows Server Core + ASP.NET with installation of windowsdesktop-runtime-6.0.18-win-x64 and vc_redist.x64.exe
