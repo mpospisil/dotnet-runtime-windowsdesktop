@@ -66,17 +66,17 @@ docker push docker.io/mpospisil/dotnet-runtime-windowsdesktop:6.0.18-windowsserv
 Windows Server Core + ASP.NET with installation of windowsdesktop-runtime-8.0.11-win-x64 and vc_redist.x64.exe
 
 ### Build the Docker image
-docker build -f Dockerfile.coreaspnet -t mpospisil/dotnet-runtime-windowsdesktop:8.0.11-windowsservercore-ltsc2022 .
+docker build -f Dockerfile.coreaspnet -t mpospisil/dotnet-runtime-windowsdesktop:8.0.11-aspnetservercore-ltsc2022 .
 
 ### Tag the image
 
-docker tag mpospisil/dotnet-runtime-windowsdesktop:8.0.11-windowsservercore-ltsc2022  docker.io/mpospisil/dotnet-runtime-windowsdesktop:8.0.11-windowsservercore-ltsc2022 
+docker tag mpospisil/dotnet-runtime-windowsdesktop:8.0.11-aspnetservercore-ltsc2022  docker.io/mpospisil/dotnet-runtime-windowsdesktop:8.0.11-aspnetservercore-ltsc2022 
 
 ### Log in to the container repository
 docker login registry-url
 
 ### Push the image to the container repository
-docker push docker.io/mpospisil/dotnet-runtime-windowsdesktop:8.0.11-windowsservercore-ltsc2022
+docker push docker.io/mpospisil/dotnet-runtime-windowsdesktop:8.0.11-aspnetservercore-ltsc2022
 
 
 ## Dockerfile.nano-kernel + node.js
