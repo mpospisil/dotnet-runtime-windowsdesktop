@@ -7,12 +7,12 @@ SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPref
 
 # Retrieve .NET Core Runtime
 # USER ContainerAdministrator
-RUN $dotnet_version = '6.0.18'; `
-    Invoke-WebRequest -OutFile dotnet-installer.exe https://download.visualstudio.microsoft.com/download/pr/f76bace5-6cf4-41d8-ab54-fb7a3766b673/1cbc047d4547dfa9ecd59d5a71402186/windowsdesktop-runtime-6.0.18-win-x64.exe; `
+RUN $dotnet_version = '8.0.11'; `
+    Invoke-WebRequest -OutFile dotnet-installer.exe https://download.visualstudio.microsoft.com/download/pr/27bcdd70-ce64-4049-ba24-2b14f9267729/d4a435e55182ce5424a7204c2cf2b3ea/windowsdesktop-runtime-8.0.11-win-x64.exe; `
     ./dotnet-installer.exe /S
 
 # Runtime image 
-FROM mcr.microsoft.com/dotnet/aspnet:6.0-nanoserver-ltsc2022 as nano-with-dotnet
+FROM mcr.microsoft.com/dotnet/aspnet:8.0.11-nanoserver-ltsc2022 as nano-with-dotnet
 
 ENV `
     # Enable detection of running in a container
