@@ -32,6 +32,7 @@ COPY --from=installer ["/Program Files/dotnet", "/Program Files/dotnet"]
 # In order to set system PATH, ContainerAdministrator must be used
 USER ContainerAdministrator
 RUN setx /M PATH "%PATH%;C:\Program Files\dotnet;C:\Program Files\vc_redist.x64"
+ENV IS_NANOSERVER=1
 USER ContainerUser
 
 
