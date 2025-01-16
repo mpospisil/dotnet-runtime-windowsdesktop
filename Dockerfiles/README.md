@@ -24,9 +24,9 @@ The docker file [Dockerfile.nano-kernel32](Dockerfile.nano-kernel32) creates a W
 It solves an issue of windows reverse forwaders - see a discussion  [Nano Server does not have kernel32.dll and advapi32.dl](https://stackoverflow.com/questions/33467943/running-asp-net-5-on-nano-server-throws-unable-to-load-dll-kernel32/33585300#33585300).
 The file 'kernel32.dll' is copied to 'C:\Windows\System32' during docker build and it overrides a light version ok kernel.32 which is located in 'C:\Windows\System32\forwarders' in the original Windows Nanoserver image.
 
-docker build -f Dockerfile.nano-kernel32 -t mpospisil/dotnet-runtime-windowsdesktop:8.0.11-nanoserver-kernel32-ltsc2022 .
+docker build -f Dockerfile.nano-kernel32 -t mpospisil/dotnet-runtime-windowsdesktop:8.0.11-nanoserver-kernel32-ltsc2022-2 .
 
-docker tag mpospisil/dotnet-runtime-windowsdesktop:8.0.11-nanoserver-kernel32-ltsc2022  docker.io/mpospisil/dotnet-runtime-windowsdesktop:8.0.11-nanoserver-ltsc2022
+docker tag mpospisil/dotnet-runtime-windowsdesktop:8.0.11-nanoserver-kernel32-ltsc2022-2  docker.io/mpospisil/dotnet-runtime-windowsdesktop:8.0.11-nanoserver-ltsc2022-2
 
 docker push docker.io/mpospisil/dotnet-runtime-windowsdesktop:8.0.11-nanoserver-kernel32-ltsc2022
 
