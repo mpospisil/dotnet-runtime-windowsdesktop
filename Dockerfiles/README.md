@@ -24,11 +24,11 @@ The docker file [Dockerfile.nano-kernel32](Dockerfile.nano-kernel32) creates a W
 It solves an issue of windows reverse forwaders - see a discussion  [Nano Server does not have kernel32.dll and advapi32.dl](https://stackoverflow.com/questions/33467943/running-asp-net-5-on-nano-server-throws-unable-to-load-dll-kernel32/33585300#33585300).
 The file 'kernel32.dll' is copied to 'C:\Windows\System32' during docker build and it overrides a light version ok kernel.32 which is located in 'C:\Windows\System32\forwarders' in the original Windows Nanoserver image.
 
-docker build -f Dockerfile.nano-kernel32 -t mpospisil/dotnet-runtime-windowsdesktop:6.0.18-nanoserver-kernel32-ltsc2022 .
+docker build -f Dockerfile.nano-kernel32 -t mpospisil/dotnet-runtime-windowsdesktop:8.0.11-nanoserver-kernel32-ltsc2022-2 .
 
-docker tag mpospisil/dotnet-runtime-windowsdesktop:6.0.18-nanoserver-kernel32-ltsc2022  docker.io/mpospisil/dotnet-runtime-windowsdesktop:6.0.18-nanoserver-ltsc2022
+docker tag mpospisil/dotnet-runtime-windowsdesktop:8.0.11-nanoserver-kernel32-ltsc2022-2  docker.io/mpospisil/dotnet-runtime-windowsdesktop:8.0.11-nanoserver-ltsc2022-2
 
-docker push docker.io/mpospisil/dotnet-runtime-windowsdesktop:6.0.18-nanoserver-kernel32-ltsc2022
+docker push docker.io/mpospisil/dotnet-runtime-windowsdesktop:8.0.11-nanoserver-kernel32-ltsc2022
 
 ## NanoServer + Powershell
 Poweshell is installed in the container  in '/Program Files/powershell'
@@ -63,20 +63,20 @@ docker login registry-url
 docker push docker.io/mpospisil/dotnet-runtime-windowsdesktop:6.0.18-windowsservercore-ltsc2022
 
 ## Windows Server Core + ASP.NET
-Windows Server Core + ASP.NET with installation of windowsdesktop-runtime-6.0.18-win-x64 and vc_redist.x64.exe
+Windows Server Core + ASP.NET with installation of windowsdesktop-runtime-8.0.11-win-x64 and vc_redist.x64.exe
 
 ### Build the Docker image
-docker build -f Dockerfile.coreaspnet -t mpospisil/dotnet-runtime-windowsdesktop:6.0.18-aspnetservercore-ltsc2022 .
+docker build -f Dockerfile.coreaspnet -t mpospisil/dotnet-runtime-windowsdesktop:8.0.11-aspnetservercore-ltsc2022 .
 
 ### Tag the image
 
-docker tag mpospisil/dotnet-runtime-windowsdesktop:6.0.18-aspnetservercore-ltsc2022  docker.io/mpospisil/dotnet-runtime-windowsdesktop:6.0.18-aspnetservercore-ltsc2022 
+docker tag mpospisil/dotnet-runtime-windowsdesktop:8.0.11-aspnetservercore-ltsc2022  docker.io/mpospisil/dotnet-runtime-windowsdesktop:8.0.11-aspnetservercore-ltsc2022 
 
 ### Log in to the container repository
 docker login registry-url
 
 ### Push the image to the container repository
-docker push docker.io/mpospisil/dotnet-runtime-windowsdesktop:6.0.18-aspnetservercore-ltsc2022
+docker push docker.io/mpospisil/dotnet-runtime-windowsdesktop:8.0.11-aspnetservercore-ltsc2022
 
 
 ## Dockerfile.nano-kernel + node.js

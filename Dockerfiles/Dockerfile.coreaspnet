@@ -1,6 +1,6 @@
 # escape=`
 
-FROM mcr.microsoft.com/dotnet/aspnet:6.0.18-windowsservercore-ltsc2022 as application-base
+FROM mcr.microsoft.com/dotnet/aspnet:8.0.19-windowsservercore-ltsc2022 as application-base
 
 ENV `
     # Enable detection of running in a container
@@ -11,8 +11,8 @@ SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPref
 # Run PowerShell commands
 RUN Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope LocalMachine -Force
 
-RUN $dotnet_version = '6.0.18'; `
-    Invoke-WebRequest -OutFile dotnet-installer.exe https://download.visualstudio.microsoft.com/download/pr/f76bace5-6cf4-41d8-ab54-fb7a3766b673/1cbc047d4547dfa9ecd59d5a71402186/windowsdesktop-runtime-6.0.18-win-x64.exe; `
+RUN $dotnet_version = '8.0.19'; `
+    Invoke-WebRequest -OutFile dotnet-installer.exe https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/8.0.19/windowsdesktop-runtime-8.0.19-win-x64.exe; `
     ./dotnet-installer.exe /S`
     Remove-Item -Force dotnet-installer.exe;
 
