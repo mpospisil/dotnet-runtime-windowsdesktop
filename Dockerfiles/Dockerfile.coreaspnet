@@ -1,6 +1,6 @@
 # escape=`
 
-FROM mcr.microsoft.com/dotnet/aspnet:8.0.19-windowsservercore-ltsc2022 as application-base
+FROM mcr.microsoft.com/dotnet/aspnet:8.0.19-windowsservercore-ltsc2025 as application-base
 
 ENV `
     # Enable detection of running in a container
