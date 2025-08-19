@@ -17,7 +17,7 @@ REM Log in to the container repository
 docker login --username mpospisil --password dckr_pat_XXX 
 
 REM  Log in to the container repository
-docker push docker.io/dotnet-runtime-windowsdesktop:8.0.19-windowsservercore-ltsc2022
+docker push docker.io/mpospisil/dotnet-runtime-windowsdesktop:8.0.19-windowsservercore-ltsc2022
 ```
 
 ### Run the container with terminal
